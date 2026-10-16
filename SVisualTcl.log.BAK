@@ -1,0 +1,40 @@
+###########################################
+# Sentaurus Visual X-2025.06.
+# Tcl log file.
+#------------------------------------------
+# Date: Oct 13, 2026. 12:41:10.
+# Version: 2025.06.9833470
+# Mode: Interactive (GUI).
+# Mesa: enabled.
+# Hostname: tcadpc15.manipal.edu.
+# Machine: Linux, x86_64, linux64.
+# Kernel: 4.18.0-425.3.1.el8.x86_64.
+###########################################
+
+load_file /home/tcad26/Student/240959278/PROJECT/vtc_vin_0000_nmos1_des.tdr -fod
+create_plot -dataset vtc_vin_0000_nmos1_des
+select_plots {Plot_vtc_vin_0000_nmos1_des}
+#-> Plot_vtc_vin_0000_nmos1_des
+#-> Plot_vtc_vin_0000_nmos1_des
+#-> vtc_vin_0000_nmos1_des
+set_field_prop eDensity -plot Plot_vtc_vin_0000_nmos1_des -geom vtc_vin_0000_nmos1_des -show_bands
+#-> 0
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 1.1
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 0.909091
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 0.909091
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 0.909091
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 1.1
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 1.1
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 1.1
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 1.1
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 0.909091
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 0.909091
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 0.909091
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 0.909091
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 1.1
+zoom_plot -plot Plot_vtc_vin_0000_nmos1_des -factor 1.1
+set_legend_prop -plot Plot_vtc_vin_0000_nmos1_des -position {0.8 0.5} -size {0.15 0.3}
+#-> 0
+set_legend_prop -plot Plot_vtc_vin_0000_nmos1_des -position {0.587481 0.345898} -size {0.15 0.3}
+#-> 0
+exit 0

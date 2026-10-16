@@ -1,0 +1,10 @@
+using Vin = 'v(in)', Vout = 'v(out)'
+  VM               0.8248
+  VIL              0.6506
+  VIH              0.9397
+  VOH              1.6650
+  VOL              0.1468
+  NML              0.5037
+  NMH              0.7253
+  peak_gain       18.5721
+  peak_Idd_uA     89.1389

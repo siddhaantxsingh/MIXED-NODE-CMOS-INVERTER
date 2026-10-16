@@ -1,0 +1,5 @@
+  tpHL_ps           31.43
+  tpLH_ps           41.17
+  tfall_ps          48.38
+  trise_ps          71.76
+  tp_avg_ps         36.30

@@ -1,0 +1,8 @@
+  Vt_maxgm_V             0.3728
+  Vt_cc_lin_V            0.3013
+  Vt_cc_sat_V            0.2629
+  DIBL_mV_per_V           21.94
+  SS_mV_per_dec           75.72
+  Ion_uA_per_um           474.6
+  Ioff_pA_per_um          31.67
+  Ion_Ioff            1.499e+07

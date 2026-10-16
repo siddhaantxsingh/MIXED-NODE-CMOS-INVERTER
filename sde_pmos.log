@@ -1,0 +1,276 @@
+
+                          Sentaurus Structure Editor 
+
+                  Version X-2025.06 for linux64 - May 23, 2025
+           Changelist number: 9833470, Compile host: sce-tcad-build04
+
+                    Copyright (c) 1994 - 2025 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Running on: tcadpc15.manipal.edu
+Hardware type: x86_64
+OS name: Linux
+OS release: 4.18.0-425.3.1.el8.x86_64
+OS version: #1 SMP Fri Sep 30 11:45:06 EDT 2022
+Process ID: 8075
+
+Evaluating file pmos_180.scm
+
+---> (sde:clear)
+
+---> (sdegeo:set-default-boolean ABA)
+
+---> (define Lg 0.18)
+
+---> (define Tox 0.004)
+
+---> (define Lsp 0.1)
+
+---> (define Hsp 0.01)
+
+---> (define Lsd 0.35)
+
+---> (define Dsub 2.0)
+
+---> (define Nbody 3e+17)
+
+---> (define Nsd 5e+19)
+
+---> (define Xj_sd 0.12)
+
+---> (define Next 5e+18)
+
+---> (define Xj_ext 0.035)
+
+---> (define LatFac 0.8)
+
+---> (define X0 0.0)
+
+---> (define X1 (+ X0 Lsd))
+
+---> (define X2 (+ X1 Lsp))
+
+---> (define X3 (+ X2 Lg))
+
+---> (define X4 (+ X3 Lsp))
+
+---> (define X5 (+ X4 Lsd))
+
+---> (define Ys Dsub)
+
+---> (define Yox (+ Ys Tox))
+
+---> (define Ytop (+ Ys Hsp))
+
+---> (sdegeo:create-rectangle (position X0 0.0 0.0) (position X5 Ys 0.0) Silicon region_body)
+
+---> (sdegeo:create-rectangle (position X2 Ys 0.0) (position X3 Yox 0.0) SiO2 region_oxide)
+
+---> (sdegeo:create-rectangle (position X2 Yox 0.0) (position X3 Ytop 0.0) TiN region_metal)
+
+---> (sdegeo:create-rectangle (position X1 Ys 0.0) (position X2 Ytop 0.0) Si3N4 region_source)
+
+---> (sdegeo:create-rectangle (position X3 Ys 0.0) (position X4 Ytop 0.0) Si3N4 region_drain)
+
+---> (sdegeo:define-contact-set source 4.0 (color:rgb 1.0 0.0 0.0) ##)
+
+---> (sdegeo:define-contact-set drain 4.0 (color:rgb 0.0 1.0 0.0) ##)
+
+---> (sdegeo:define-contact-set gate 4.0 (color:rgb 0.0 0.0 1.0) ##)
+
+---> (sdegeo:define-contact-set body 4.0 (color:rgb 1.0 1.0 0.0) ##)
+
+---> (sdegeo:set-current-contact-set source)
+
+---> (sdegeo:set-contact-edges (list (car (find-edge-id (position (/ (+ X0 X1) 2) Ys 0.0)))) source)
+
+(sdegeo:set-contact (list (car (find-edge-id (position 0.175 2 0)))) "source")
+
+---> (sdegeo:set-current-contact-set drain)
+
+---> (sdegeo:set-contact-edges (list (car (find-edge-id (position (/ (+ X4 X5) 2) Ys 0.0)))) drain)
+
+(sdegeo:set-contact (list (car (find-edge-id (position 0.905 2 0)))) "drain")
+
+---> (sdegeo:set-current-contact-set body)
+
+---> (sdegeo:set-contact-edges (list (car (find-edge-id (position (/ X5 2) 0.0 0.0)))) body)
+
+(sdegeo:set-contact (list (car (find-edge-id (position 0.54 0 0)))) "body")
+
+---> (sdegeo:set-current-contact-set gate)
+
+---> (sdegeo:set-contact-boundary-edges (list (car (find-body-id (position (/ (+ X2 X3) 2) (/ (+ Yox Ytop) 2) 0.0)))) gate)
+
+(sdegeo:set-contact (list (car (find-body-id (position 0.54 2.007 0)))) "gate")
+
+(sdegeo:set-contact (list (car (find-edge-id (position 0.54 2.004 0))) (car (find-edge-id (position 0.63 2.007 0))) (car (find-edge-id (position 0.54 2.01 0))) (car (find-edge-id (position 0.45 2.007 0)))) "gate")
+
+---> (sdegeo:delete-region (list (car (find-body-id (position (/ (+ X2 X3) 2) (/ (+ Yox Ytop) 2) 0.0)))))
+
+---> (sdedr:define-constant-profile ConstantProfileDefinition_body PhosphorusActiveConcentration Nbody)
+
+---> (sdedr:define-constant-profile-region ConstantProfilePlacement_body ConstantProfileDefinition_body region_body)
+
+---> (sdedr:define-refeval-window RefEvalWin_source Line (position X0 Ys 0.0) (position X1 Ys 0.0))
+
+---> (sdedr:define-refeval-window RefEvalWin_drain Line (position X4 Ys 0.0) (position X5 Ys 0.0))
+
+---> (sdedr:define-refeval-window RefEvalWin_source_ext Line (position X1 Ys 0.0) (position X2 Ys 0.0))
+
+---> (sdedr:define-refeval-window RefEvalWin_drain_ext Line (position X3 Ys 0.0) (position X4 Ys 0.0))
+
+---> (sdedr:define-gaussian-profile AnalyticalProfileDefinition_sd BoronActiveConcentration PeakPos 0 PeakVal Nsd ValueAtDepth Nbody Depth Xj_sd Gauss Factor LatFac)
+
+---> (sdedr:define-gaussian-profile AnalyticalProfileDefinition_ext BoronActiveConcentration PeakPos 0 PeakVal Next ValueAtDepth Nbody Depth Xj_ext Gauss Factor LatFac)
+
+---> (sdedr:define-analytical-profile-placement AnalyticalProfilePlacement_source AnalyticalProfileDefinition_sd RefEvalWin_source Both NoReplace Eval)
+
+---> (sdedr:define-analytical-profile-placement AnalyticalProfilePlacement_drain AnalyticalProfileDefinition_sd RefEvalWin_drain Both NoReplace Eval)
+
+---> (sdedr:define-analytical-profile-placement AnalyticalProfilePlacement_source_ext AnalyticalProfileDefinition_ext RefEvalWin_source_ext Both NoReplace Eval)
+
+---> (sdedr:define-analytical-profile-placement AnalyticalProfilePlacement_drain_ext AnalyticalProfileDefinition_ext RefEvalWin_drain_ext Both NoReplace Eval)
+
+---> (sdedr:define-refeval-window RefEvalWin_global Rectangle (position X0 0.0 0.0) (position X5 Ytop 0.0))
+
+---> (sdedr:define-refinement-size RefinementDefinition_global 0.05 0.2 0.01 0.01)
+
+---> (sdedr:define-refinement-placement RefinementPlacement_global RefinementDefinition_global RefEvalWin_global)
+
+---> (sdedr:define-refinement-function RefinementDefinition_global DopingConcentration MaxTransDiff 1)
+
+---> (sdedr:define-refeval-window RefEvalWin_channel Rectangle (position (- X1 0.05) (- Ys 0.15) 0.0) (position (+ X4 0.05) Ys 0.0))
+
+---> (sdedr:define-refinement-size RefinementDefinition_channel 0.005 0.005 0.001 0.0005)
+
+---> (sdedr:define-refinement-placement RefinementPlacement_channel RefinementDefinition_channel RefEvalWin_channel)
+
+---> (sdedr:define-refinement-function RefinementDefinition_channel MaxLenInt region_body region_oxide 0.0005 1.4 DoubleSide UseRegionNames)
+
+---> (sdedr:define-refinement-function RefinementDefinition_channel MaxLenInt region_body region_source 0.001 1.4 DoubleSide UseRegionNames)
+
+---> (sdedr:define-refinement-function RefinementDefinition_channel MaxLenInt region_body region_drain 0.001 1.4 DoubleSide UseRegionNames)
+
+---> (sde:save-model pmos_180)
+
+---> (sde:build-mesh snmesh -a -c boxmethod pmos_180_msh)
+
+
+                                Sentaurus Mesh 
+
+                  Version X-2025.06 for linux64 - May 23, 2025
+           Changelist number: 9833470, Compile host: sce-tcad-build04
+
+                    Copyright (c) 2005 - 2025 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Running on: tcadpc15.manipal.edu
+Hardware type: x86_64
+OS name: Linux
+OS release: 4.18.0-425.3.1.el8.x86_64
+OS version: #1 SMP Fri Sep 30 11:45:06 EDT 2022
+Process ID: 8108
+
+Flags used: -a -c boxmethod
+
+** Generating 2d grid **
+
+Creating binary tree...done.
+Imprinting binary tree on the boundary...done.
+Optimizing boundary nodes...done.
+
+Number of vertices after binary tree generation : 
+  6882 (tree) + 367 (boundary)
+
+
+=================================  brep2d quality  =====================================
+minAngle: 90  [near (-0 -0)] at region=region_body
+nVerts = 367  nTris = 370  nRegs = 8
+bmin: -0 -0
+bmax: 1.08 2.01
+min area: 0.000175781  max area: 0.125625  min edge length : 0.000175781
+total area  : 6.58 interface area: 0.388
+total volume: 2.54056
+Conformal? true
+Are all boundaries on bbox? false
+==================================================================================
+** Delaunizing the mesh **
+
+Creating delaunizer input...done.
+Solving edges...done 
+Optimizing elements...done. (6985 vertices)
+Fixing diagonals...done.
+
+The final mesh has: 
+    6866 points.
+   13484 elements.
+       8 regions.
+Max. connectivity = 8 located at (0.341719;1.99037)
+
+
+==============================  tri-grid quality  ================================
+    0  10  20  30  40  50  60  70  80  90 100 110 120 130 140 150 160 170 180
+ %    1   3   5   1  23  23   2   5   3  33                                
+---------------------------------------------------------------------------------
+minAngle: 2.27923  maxAngle: 90
+nVerts = 6866  nTris = 13484  nMats = 4
+max connectivity (tris per node): 8 [near (0.341719 1.99037)]
+bmin: -0 -0
+bmax: 1.08 2.01
+min edgeLength: 0.00015625  [near (0.729922 2)]
+min volume: 1.44958e-08  max volume: 0.00211992  Total volume: 2.16272
+bbox  volume: 2.1708
+Are all boundaries on bbox? false
+=================================================================================
+
+Smallest region: region_oxide  Total volume: 0.00072
+Interpolating data...done.
+Saving file pmos_180_msh.tdr...done.
+
+===============================  Timer Report===================================
+              Total Mesh Generation Time:     0.194s       100%
+                       Rate of #Vertices:  3.53e+04
+                          Rate of #Edges:  7.06e+04
+                          Rate of #Faces:  6.94e+04
+                       Rate of #Elements:         0
+
+                            Time Covered:         0s         0%
+
+
+"Meshing successful"
+---> #[end-of-file]
+
+"************************************************************************"
+"Sentaurus Structure Editor "
+"Start Time:    Tue Oct 13 10:15:46 2026"
+"End   Time:    Tue Oct 13 10:15:47 2026"
+"Total Execution Time (sec):    1"
+"Total System calls Time (sec): 0"
+"************************************************************************"
